@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="sap.ui.demo.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%"
+    >
+    <Page fitContainer="true" class="sapUiSmallMargin product-list-container" height="100%" width="100%" enableScrolling="true">
+        <headerContent>
+            <Text id="counter" text="Products App" class="centered-title"/>
+        </headerContent>
+        <content>
+            <HBox class="sapUiSmallMarginBottom product-header-row" alignItems="Center" justifyContent="Center">
+                <Text text="Name" class="product-header"/>
+                <Text text="Price" class="product-header"/>
+                <Text text="Rating" class="product-header"/>
+                <Button text="Add Product" press=".onAddProductPress" class="product-header"/>
+            </HBox>
+            <VBox items="{products>/d}" height="100%">
+                <items>
+                    <Panel class="sapUiTinyMarginBottom product-panel" expandable="false">
+                        <HBox alignItems="Center" justifyContent="Center" class="product-row">
+                            <Text text="{products>Name}" class="product-name"/>
+                            <ObjectNumber number="{products>Price}" unit="€" class="product-price"/>
+                            <RatingIndicator value="{products>Rating}" maxValue="5" displayOnly="true" class="product-rating"/>
+                            <Button text="Detail" press=".onPress" class="product-detail-btn">
+                                <customData>
+                                    <core:CustomData key="productId" value="{products>ID}" writeToDom="true"/>
+                                </customData>
+                            </Button>
+                        </HBox>
+                    </Panel>
+                </items>
+            </VBox>
+        </content>
+    </Page>
+    <!-- Dialog pro přidání produktu -->
+    <Dialog id="addProductDialog" title="Add Product" contentWidth="400px" contentHeight="auto" class="add-product-dialog">
+        <VBox class="sapUiSmallMargin">
+            <Label text="Name" required="true"/>
+            <Input id="newProductName" placeholder="Enter name"/>
+            <Label text="Price (€)" required="true"/>
+            <Input id="newProductPrice" placeholder="0.00" type="Number"/>
+            <Label text="Rating (1-5)" required="true"/>
+            <RatingIndicator id="newProductRating" maxValue="5" value="3" displayOnly="false"/>
+        </VBox>
+        <beginButton>
+            <Button text="Create" type="Emphasized" press=".onConfirmAddProduct"/>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press=".onCancelAddProduct"/>
+        </endButton>
+    </Dialog>
+</mvc:View>

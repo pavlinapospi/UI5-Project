@@ -1,0 +1,14 @@
+<mvc:View
+	controllerName="sap.ui.demo.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:wt="sap.ui.demo.control">
+	<Page
+		title="Detail"
+        showNavButton="true"
+		navButtonPress=".onNavBack">
+		<ObjectHeader title="{products>Name}" number="{products>Price} €"/>
+		<Text text="{products>Description}"/>
+		
+	</Page>
+</mvc:View>
