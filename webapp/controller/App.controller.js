@@ -37,7 +37,7 @@ sap.ui.define(
           iRating < 1 ||
           iRating > 5
         ) {
-          MessageBox.error("Vyplňte správně všechna pole!");
+          MessageBox.error("Fill in all fields correctly!");
           return;
         }
         const oModel = oView.getModel("products");
@@ -52,7 +52,7 @@ sap.ui.define(
         aProducts.push(oNewProduct);
         oModel.setProperty("/d", aProducts);
         this.onCancelAddProduct();
-        MessageBox.success("Produkt byl úspěšně přidán!");
+        MessageBox.success("Product was successfully added!");
       },
       _clearAddProductForm: function () {
         const oView = this.getView();
